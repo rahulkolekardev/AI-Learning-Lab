@@ -6,6 +6,11 @@ Welcome to the AI Learning Lab! This interactive web application allows you to e
 
 **📂 Repository:** [https://github.com/rahulkolekardev/AI-Learning-Lab](https://github.com/rahulkolekardev/AI-Learning-Lab)
 
+## 🖼️ Application Preview
+
+![AI Learning Lab Screenshot](https://github.com/rahulkolekardev/AI-Learning-Lab/blob/main/Screenshot.png?raw=true)
+*(Screenshot of the AI Learning Lab in action!)*
+
 ## 🌟 Features
 
 *   **🤖 Interactive Algorithm Selection:** Choose from a suite of classic supervised learning algorithms:
