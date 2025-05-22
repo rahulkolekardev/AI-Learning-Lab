@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Learning Lab - Supervised Algorithms</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Learning Lab</h1>
+            <p>Interactive Supervised Algorithm Playground</p>
+        </header>
+
+        <div class="main-layout">
+            <aside class="controls-sidebar">
+                <div class="panel">
+                    <h2>SYSTEM CORE // Algorithm</h2>
+                    <div class="input-group">
+                        <label for="algorithmSelect">Select Protocol:</label>
+                        <select id="algorithmSelect">
+                            <option value="knn">k-Nearest Neighbors (Classifier)</option>
+                            <option value="linearRegression">Linear Regression</option>
+                            <option value="logisticRegression">Logistic Regression (Classifier)</option>
+                            <option value="decisionTree">Decision Tree (Classifier)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h2>DATA STREAM // Configuration</h2>
+                    <div class="input-group">
+                        <label for="datasetType">Dataset Matrix:</label>
+                        <select id="datasetType">
+                            <option value="gauss">Gaussian Blobs (Classification)</option>
+                            <option value="circles">Concentric Circles (Classification)</option>
+                            <option value="xor">XOR-like (Classification)</option>
+                            <option value="linearTrend">Linear Trend (Regression)</option>
+                            <option value="sineWave">Sine Wave (Regression)</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="numSamples">Sample Density: <span id="numSamplesValue" class="range-value">150</span></label>
+                        <input type="range" id="numSamples" min="30" max="300" step="10" value="150">
+                    </div>
+                    <div class="input-group">
+                        <label for="noiseLevel">Signal Noise: <span id="noiseLevelValue" class="range-value">0.10</span></label>
+                        <input type="range" id="noiseLevel" min="0" max="0.5" step="0.01" value="0.1">
+                    </div>
+                    <button id="generateDataButton" class="control-button" style="margin-top:10px;">Generate Data Matrix</button>
+                </div>
+
+                <div class="panel" id="hyperparametersPanel">
+                    <h2>CALIBRATION // Hyperparameters</h2>
+                    <div id="hyperparamsContainer"></div>
+                </div>
+
+                <div class="panel">
+                    <h2>EXECUTION // Controls</h2>
+                     <button id="trainButton" class="control-button" style="margin-bottom:15px;">Initiate Training</button>
+                     <button id="resetButton" class="control-button danger">System Reset</button>
+                </div>
+            </aside>
+
+            <main class="main-content-area">
+                <div class="panel">
+                    <h2>VISUALIZATION GRID</h2>
+                    <div id="visualizationCanvasContainer">
+                        <canvas id="decisionBoundaryCanvas"></canvas>
+                        <canvas id="dataPointsCanvas"></canvas>
+                    </div>
+                     <p id="visualizationCaption" style="font-size:0.9em; text-align: center; color: var(--text-secondary); margin-top:10px;">
+                        <!-- Caption updated by JS -->
+                    </p>
+                </div>
+
+                <div class="panel">
+                    <h2>PERFORMANCE ANALYSIS</h2>
+                    <div class="metrics-display">
+                        <div class="metric-item">
+                            <div class="label">Algorithm</div>
+                            <div class="value" id="metricAlgorithm">-</div>
+                        </div>
+                        <div class="metric-item" id="accuracyMetricItem">
+                            <div class="label">Accuracy</div>
+                            <div class="value" id="metricAccuracy">-</div>
+                        </div>
+                         <div class="metric-item" id="mseMetricItem" style="display:none;">
+                            <div class="label">Mean Squared Error</div>
+                            <div class="value" id="metricMSE">-</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel algorithm-info">
+                    <h3>About: <span id="infoAlgorithmName">Algorithm</span></h3>
+                    <p id="infoAlgorithmDescription"></p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="script.js">
+
+    </script>
+</body>
+</html>
