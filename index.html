@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Learning Lab - Supervised Algorithms</title>
+    <title>AI Learning Lab - Advanced Linear Regression</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
@@ -22,10 +21,13 @@
                     <div class="input-group">
                         <label for="algorithmSelect">Select Protocol:</label>
                         <select id="algorithmSelect">
+                            <option value="linearRegression">Linear Regression (Advanced)</option>
                             <option value="knn">k-Nearest Neighbors (Classifier)</option>
-                            <option value="linearRegression">Linear Regression</option>
                             <option value="logisticRegression">Logistic Regression (Classifier)</option>
                             <option value="decisionTree">Decision Tree (Classifier)</option>
+                            <option value="naiveBayes">Naive Bayes (Gaussian)</option>   <!-- New -->
+                            <option value="svm">Support Vector Machine (SVM)</option>  <!-- New -->
+                            <option value="randomForest">Random Forest (Classifier)</option> <!-- New -->
                         </select>
                     </div>
                 </div>
@@ -35,16 +37,16 @@
                     <div class="input-group">
                         <label for="datasetType">Dataset Matrix:</label>
                         <select id="datasetType">
-                            <option value="gauss">Gaussian Blobs (Classification)</option>
-                            <option value="circles">Concentric Circles (Classification)</option>
-                            <option value="xor">XOR-like (Classification)</option>
                             <option value="linearTrend">Linear Trend (Regression)</option>
                             <option value="sineWave">Sine Wave (Regression)</option>
+                            <option value="gauss" disabled>Gaussian Blobs (Classification)</option>
+                            <option value="circles" disabled>Concentric Circles (Classification)</option>
+                            <option value="xor" disabled>XOR-like (Classification)</option>
                         </select>
                     </div>
                     <div class="input-group">
-                        <label for="numSamples">Sample Density: <span id="numSamplesValue" class="range-value">150</span></label>
-                        <input type="range" id="numSamples" min="30" max="300" step="10" value="150">
+                        <label for="numSamples">Sample Density: <span id="numSamplesValue" class="range-value">100</span></label>
+                        <input type="range" id="numSamples" min="30" max="250" step="10" value="100">
                     </div>
                     <div class="input-group">
                         <label for="noiseLevel">Signal Noise: <span id="noiseLevelValue" class="range-value">0.10</span></label>
@@ -55,7 +57,9 @@
 
                 <div class="panel" id="hyperparametersPanel">
                     <h2>CALIBRATION // Hyperparameters</h2>
-                    <div id="hyperparamsContainer"></div>
+                    <div id="hyperparamsContainer">
+                        <!-- Dynamically filled by main.js -->
+                    </div>
                 </div>
 
                 <div class="panel">
@@ -69,10 +73,10 @@
                 <div class="panel">
                     <h2>VISUALIZATION GRID</h2>
                     <div id="visualizationCanvasContainer">
-                        <canvas id="decisionBoundaryCanvas"></canvas>
                         <canvas id="dataPointsCanvas"></canvas>
+                        <canvas id="modelVisualizationCanvas"></canvas> 
                     </div>
-                     <p id="visualizationCaption" style="font-size:0.9em; text-align: center; color: var(--text-secondary); margin-top:10px;">
+                     <p id="visualizationCaption" class="visualization-caption">
                         <!-- Caption updated by JS -->
                     </p>
                 </div>
@@ -84,13 +88,25 @@
                             <div class="label">Algorithm</div>
                             <div class="value" id="metricAlgorithm">-</div>
                         </div>
-                        <div class="metric-item" id="accuracyMetricItem">
+                        <div class="metric-item" id="accuracyMetricItem" style="display:none;">
                             <div class="label">Accuracy</div>
                             <div class="value" id="metricAccuracy">-</div>
                         </div>
-                         <div class="metric-item" id="mseMetricItem" style="display:none;">
-                            <div class="label">Mean Squared Error</div>
+                         <div class="metric-item" id="mseMetricItem" style="display:block;">
+                            <div class="label">Mean Squared Error (MSE)</div>
                             <div class="value" id="metricMSE">-</div>
+                        </div>
+                        <div class="metric-item" id="rmseMetricItem" style="display:block;">
+                            <div class="label">Root MSE (RMSE)</div>
+                            <div class="value" id="metricRMSE">-</div>
+                        </div>
+                        <div class="metric-item" id="maeMetricItem" style="display:block;">
+                            <div class="label">Mean Absolute Error (MAE)</div>
+                            <div class="value" id="metricMAE">-</div>
+                        </div>
+                        <div class="metric-item" id="rSquaredMetricItem" style="display:block;">
+                            <div class="label">R-squared (R²)</div>
+                            <div class="value" id="metricRSquared">-</div>
                         </div>
                     </div>
                 </div>
@@ -103,8 +119,16 @@
         </div>
     </div>
 
-    <script src="script.js">
+<!-- Algorithm Scripts -->
+<script src="js/algorithms/linearRegression.js"></script>
+<script src="js/algorithms/knn.js"></script>
+<script src="js/algorithms/logisticRegression.js"></script>
+<script src="js/algorithms/decisionTree.js"></script>
+<script src="js/algorithms/naiveBayes.js"></script>   <!-- New -->
+<script src="js/algorithms/svm.js"></script>          <!-- New -->
+<script src="js/algorithms/randomForest.js"></script> <!-- New -->
 
-    </script>
+<!-- Main Application Script -->
+<script src="js/main.js"></script>
 </body>
 </html>
